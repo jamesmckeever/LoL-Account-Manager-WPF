@@ -1,0 +1,20 @@
+﻿<Application x:Class="LoLAccountManagerC.App"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:LoLAccountManagerC"
+             StartupUri="MainWindow.xaml">
+    <Application.Resources>
+        <!--<ResourceDictionary>
+            <Color x:Key="BackgroundColor">#576694</Color>
+            <Color x:Key="ForegroundColor">#333333</Color>
+            <SolidColorBrush x:Key="BackgroundBrush" Color="{StaticResource BackgroundColor}"/>
+            <SolidColorBrush x:Key="ForegroundBrush" Color="{StaticResource ForegroundColor}"/>
+
+            <Style TargetType="Window">
+                <Setter Property="Background" Value="{StaticResource BackgroundBrush}"/>
+                <Setter Property="Foreground" Value="{StaticResource ForegroundBrush}"/>
+            </Style>
+
+        </ResourceDictionary>-->
+    </Application.Resources>
+</Application>

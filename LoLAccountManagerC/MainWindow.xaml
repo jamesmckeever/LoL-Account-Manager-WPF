@@ -1,0 +1,453 @@
+﻿<Window x:Class="LoLAccountManagerC.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:LoLAccountManagerC"
+        mc:Ignorable="d"
+        Title="Account Manager" Height="400" Width="480" ResizeMode="NoResize"
+        WindowStyle="None"
+        Loaded="MainWindow_Loaded"
+        Background="#1b263b">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition />
+            <ColumnDefinition Width="110"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid.RowDefinitions>
+
+            <RowDefinition Height="25"/>
+            <RowDefinition/>
+            <RowDefinition Height="40"/>
+        </Grid.RowDefinitions>
+
+        <Grid
+            Background="#0d1b2a"
+            Grid.ColumnSpan="3"
+            MouseDown="Grid_MouseDown"
+            >
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <TextBlock
+                Grid.Row="0"
+                Grid.ColumnSpan="4"
+                Text="Account Manager"
+                Foreground="White"
+                FontFamily="Segoe UI"
+                FontSize="18"
+                FontWeight="Medium"
+                Margin="10,0,0,0"
+                >
+
+            </TextBlock>
+
+            <Button        
+                x:Name="ExitBtn"
+                Grid.Column="8" 
+                Grid.ColumnSpan="2"
+                Content="&#x1F5D9;"
+                Click="ExitBtn_Click"
+                >
+                <Button.Style>
+                    <Style TargetType="Button">
+                        <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                        <Setter Property="Background" Value="#e5383b"/>
+                        <Setter Property="Foreground" Value="White"/>
+                        <Setter Property="Cursor" Value="Hand"/>
+                        <Style.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#a4161a"/>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </Button.Style>
+                <Button.Template>
+                    <ControlTemplate TargetType="Button">
+                        <Border  Height="25"
+                 Background="{TemplateBinding Background}">
+                            <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                        </Border>
+                    </ControlTemplate>
+                </Button.Template>
+            </Button>
+
+        </Grid>
+        <DataGrid 
+            x:Name="DataGrid" 
+            AutoGenerateColumns="True" 
+            Margin="10" 
+            Grid.Row="1" 
+            Grid.Column="0"
+            Background="Transparent"
+            RowBackground="#e8eaf6"
+            CanUserResizeColumns="False"
+            CanUserResizeRows="False"
+            HeadersVisibility="Column"
+            CanUserAddRows="False"
+            CanUserSortColumns="False"
+            CanUserDeleteRows="False"
+            CanUserReorderColumns="False"
+            BorderThickness="0"
+            IsReadOnly="True"
+            ClipboardCopyMode="None"  
+            SelectionChanged="DataGrid_SelectionChanged"
+            LostFocus="DataGrid_LostFocus" SelectionMode="Single"
+            >
+            <DataGrid.ColumnHeaderStyle>
+                <Style TargetType="DataGridColumnHeader">
+                    <Setter Property="Background" Value="Transparent"/>
+                    <Setter Property="Foreground" Value="White"/>
+                </Style>
+                
+
+            </DataGrid.ColumnHeaderStyle>
+            
+        </DataGrid>
+
+
+        <Button
+            x:Name="DeleteBtn" 
+            Content="Delete" 
+            Margin="13,10,0,0" 
+            VerticalAlignment="Top" 
+            Height="25" 
+            Width="90" 
+            Grid.Column="1" 
+            Grid.Row="1"
+            IsEnabled="False"
+            Click="DeleteBtn_Click"
+            MouseEnter="DeleteBtn_MouseEnter"
+            MouseLeave="DeleteBtn_MouseLeave">
+            
+            
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                    <Setter Property="Background" Value="#778da9"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#415a77"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="90" Height="25"
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button   
+            x:Name="LogoutBtn"
+            Content="Logout" 
+            Margin="13,0,0,10"  
+            Width="90" Grid.Column="1"
+            Grid.Row="1" 
+            Height="25" 
+            VerticalAlignment="Bottom"
+            Click="LogoutBtn_Click">
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                    <Setter Property="Background" Value="#778da9"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#415a77"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="90" Height="25"
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Button   
+            x:Name="LoginBtn" 
+            Content="Login"  
+            
+            Margin="13,45,0,0" 
+            VerticalAlignment="Top" 
+            Height="25" 
+            Width="90" 
+            Grid.Column="1"
+            Grid.Row="1"
+            IsEnabled="False"
+            Click="LoginBtn_Click"
+            MouseEnter="LoginBtn_MouseEnter"
+            MouseLeave="LoginBtn_MouseLeave"
+            >
+            
+            
+
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                    <Setter Property="Background" Value="#778da9"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#415a77"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="90" Height="25"
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+        <Grid 
+            Grid.Row="2"
+            Grid.Column="0" 
+            Height="40" 
+            VerticalAlignment="Bottom">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            
+                <TextBox  
+                    x:Name="AccountNameInput" 
+                    Margin="10,10,0,0" 
+                    TextWrapping="NoWrap" 
+                    Text="" 
+                    FontSize="9" 
+                    FontFamily="Segoe UI"
+                    VerticalAlignment="Top" 
+                    VerticalContentAlignment="Center" 
+                    HorizontalAlignment="Left" 
+                    Width="100" 
+                    Height="25"
+                    Grid.Column="0"
+                    TextChanged="TextBox_TextChanged">
+
+                <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                            <Setter Property="Background" Value="#e8eaf6"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Cursor" Value="IBeam"/>
+                        </Style>
+                </TextBox.Style>
+                <TextBox.Template>
+                    <ControlTemplate TargetType="TextBox">
+                        <Border Width="100" 
+                            Height="25"
+                            CornerRadius="2"
+                            Background="{TemplateBinding Background}">
+                            <ScrollViewer x:Name="PART_ContentHost"/>
+                        </Border>
+                    </ControlTemplate>
+                </TextBox.Template>
+                </TextBox>
+
+
+
+
+             <TextBox  
+                     x:Name="PasswordInput" 
+                     Margin="5,10,0,0" 
+                     TextWrapping="NoWrap" 
+                     Text="" 
+                     FontSize="9" 
+                     FontFamily="Segoe UI"
+                     VerticalAlignment="Top" 
+                     VerticalContentAlignment="Center" 
+                     HorizontalAlignment="Left" 
+                     Width="100" 
+                     Height="25"
+                     Grid.Column="1"
+                     TextChanged="TextBox_TextChanged">        
+                 <TextBox.Style>
+                     <Style TargetType="TextBox">
+                         <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                         <Setter Property="Background" Value="#e8eaf6"/>
+                         <Setter Property="Foreground" Value="Black"/>
+                         <Setter Property="Cursor" Value="IBeam"/>
+
+                     </Style>
+                 </TextBox.Style>
+                 <TextBox.Template>
+                     <ControlTemplate TargetType="TextBox">
+                         <Border Width="100" 
+                     Height="25"
+                     CornerRadius="2"
+                     Background="{TemplateBinding Background}">
+                             <ScrollViewer x:Name="PART_ContentHost"/>
+                         </Border>
+                     </ControlTemplate>
+                 </TextBox.Template>
+            </TextBox>
+
+            <TextBox  
+		        x:Name="RiotIDInput" 
+		        Margin="0,10,0,0" 
+		        TextWrapping="NoWrap" 
+		        Text="" 
+                FontSize="9" 
+                FontFamily="Segoe UI"
+                VerticalAlignment="Top" 
+                VerticalContentAlignment="Center" 
+                HorizontalAlignment="Left" 
+                Width="110" 
+                Height="25"     
+                Grid.Column="2"
+                TextChanged="TextBox_TextChanged">
+                    <TextBox.Style>
+                        <Style TargetType="TextBox">
+                            <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                            <Setter Property="Background" Value="#e8eaf6"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                            <Setter Property="Cursor" Value="IBeam"/>
+
+                        </Style>
+                    </TextBox.Style>
+                    <TextBox.Template>
+                        <ControlTemplate TargetType="TextBox">
+                            <Border Width="110" 
+                                Height="25"
+                                CornerRadius="2"
+                                Background="{TemplateBinding Background}">
+                                <ScrollViewer x:Name="PART_ContentHost"/>
+                            </Border>
+                        </ControlTemplate>
+                    </TextBox.Template>
+            </TextBox>
+
+                <Label 
+                    Content="Account Name" 
+                    FontFamily="Segoe UI" 
+                    FontSize="9" 
+                    Foreground="White"
+                    HorizontalAlignment="Left" 
+                    Margin="7,-10,0,0" 
+                    VerticalAlignment="Top"                 
+                    Grid.Column="0"/>
+
+
+                <Label Content="Password" 
+                    FontFamily="Segoe UI" 
+                    FontSize="9" 
+                    Foreground="White"
+                    HorizontalAlignment="Left" 
+                    Margin="0,-10,0,0" 
+                    VerticalAlignment="Top" 
+                    Grid.Column="1"    />
+
+                <Label Content="Riot ID" 
+                    FontFamily="Segoe UI" 
+                    FontSize="9" 
+                    Foreground="White"
+                    HorizontalAlignment="Left" 
+                    Margin="0,-10,0,0" 
+                    VerticalAlignment="Top" 
+                    Grid.Column="2"/>
+
+        </Grid>
+            
+        <Button   
+            x:Name="EnterBtn" 
+            Content="Add" 
+            Margin="13,10,0,0" 
+            VerticalAlignment="Top" 
+            Height="25" 
+            Width="90"  
+            Grid.Column="1" 
+            Grid.Row="2"
+            IsEnabled="False"
+            Click="EnterBtn_Click"
+            >
+            
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="TextElement.FontFamily" Value="Segoe UI"/>
+                    <Setter Property="Background" Value="#778da9"/>
+                    <Setter Property="Foreground" Value="White"/>
+                    <Setter Property="Cursor" Value="Hand"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsMouseOver" Value="True">
+                            <Setter Property="Background" Value="#415a77"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="True">
+                            <Setter Property="Opacity" Value="1"/>
+                        </Trigger>
+                        <Trigger Property="IsEnabled" Value="False">
+                            <Setter Property="Opacity" Value="0.1"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+            <Button.Template>
+                <ControlTemplate TargetType="Button">
+                    <Border Width="90" Height="25"
+                            CornerRadius="12"
+                            Background="{TemplateBinding Background}">
+                        <ContentPresenter VerticalAlignment="Center" HorizontalAlignment="Center"/>
+                    </Border>
+                </ControlTemplate>
+            </Button.Template>
+        </Button>
+
+
+
+    </Grid>
+</Window>
